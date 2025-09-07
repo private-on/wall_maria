@@ -1,0 +1,15 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+h1, h2 {
+  color: teal;
+}
+a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: blue;
+}
+a:hover {
+  text-decoration: underline;
+}
