@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>동적 인사 페이지</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        #greeting { margin-top: 20px; font-size: 1.5em; color: teal; }
+    </style>
+</head>
+<body>
+    <h1>환영합니다!</h1>
+    
+    <div id="nameForm">
+        <label for="nameInput">이름을 입력해주세요:</label>
+        <input type="text" id="nameInput" placeholder="이름">
+        <button onclick="saveName()">저장</button>
+    </div>
+    
+    <div id="greeting" style="display:none;"></div>
+
+    <script>
+        // 페이지 로드 시 이름 불러오기
+        window.onload = function() {
+            const storedName = localStorage.getItem('username');
+            if (storedName) {
+                showGreeting(storedName);
+            }
+        }
+
+        function saveName() {
+            const name = document.getElementById('nameInput').value.trim();
+            if (name) {
+                localStorage.setItem('username', name);
+                showGreeting(name);
+            }
+        }
+
+        function showGreeting(name) {
+            document.getElementById('nameForm').style.display = 'none';
+            const greetingDiv = document.getElementById('greeting');
+            greetingDiv.style.display = 'block';
+            greetingDiv.innerText = `${name}님, 다시 오신 것을 환영합니다!`;
+        }
+    </script>
+</body>
+</html>
